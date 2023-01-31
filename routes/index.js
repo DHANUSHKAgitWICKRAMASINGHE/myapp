@@ -34,4 +34,20 @@ router.post('/addUser',function (req,res) {
 
 
 
+router.get('/deleteUser/:Id',function (req,res) {
+
+  var userid = req.params.Id;
+  console.log(userid);
+  connection.query('DELETE FROM users WHERE Id = ?',userid,function (err,rows) {
+
+    if (err) throw err;
+    res.redirect('/');
+    
+  });
+
+  
+});
+
+
+
 module.exports = router;
