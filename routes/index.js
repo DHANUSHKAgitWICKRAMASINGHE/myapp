@@ -15,4 +15,23 @@ router.get('/', function(req, res, next) {
   
 });
 
+router.post('/addUser',function (req,res) {
+  
+  const userdata = {
+    fname:req.body.fname,
+    lname:req.body.lname,
+    email:req.body.email,
+    prof:req.body.prof
+  };
+  // console.log(userdata);
+  connection.query('INSERT INTO users SET ?',userdata,function (err,result) {
+    if (err) throw err;
+    res.redirect('/');
+    
+  });
+  // res.send("data inserted.");
+});
+
+
+
 module.exports = router;
